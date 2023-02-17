@@ -17,7 +17,6 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
-        jpcrud.setSize(423, 335);
     }
 
     /**
@@ -35,7 +34,6 @@ public class Main extends javax.swing.JFrame {
         tabs = new javax.swing.JTabbedPane();
         jpAgregarEsc = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jtIP = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jtmask = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -49,6 +47,7 @@ public class Main extends javax.swing.JFrame {
         btSSD = new javax.swing.JRadioButton();
         btGraphics = new javax.swing.JCheckBox();
         btagregarEsc = new javax.swing.JButton();
+        jtIP = new javax.swing.JTextField();
         AgregarLaptop = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jtIP2 = new javax.swing.JTextField();
@@ -66,15 +65,15 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listPC = new javax.swing.JTextArea();
         jpEliminar = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jtEliminar = new javax.swing.JTextField();
+        btEliminar = new javax.swing.JButton();
         crudSalir = new javax.swing.JButton();
         almacenamiento = new javax.swing.ButtonGroup();
         bgPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btcrud = new javax.swing.JButton();
         btingrese = new javax.swing.JButton();
-
-        frameCrud.setFocusable(false);
-        frameCrud.setFocusableWindowState(false);
 
         jpcrud.setBackground(new java.awt.Color(102, 102, 255));
 
@@ -89,17 +88,29 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jpAgregarEsc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel3.setText("IP");
+        jpAgregarEsc.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 38, -1, -1));
 
         jLabel4.setText("Mask");
+        jpAgregarEsc.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 105, -1, -1));
+        jpAgregarEsc.add(jtmask, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 102, 146, -1));
 
         jLabel5.setText("Hostname");
+        jpAgregarEsc.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 172, -1, -1));
+        jpAgregarEsc.add(jthostname, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 169, 119, -1));
 
         jLabel9.setText("RAM");
+        jpAgregarEsc.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 219, -1, -1));
+        jpAgregarEsc.add(jtram, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 216, 119, -1));
 
         jLabel10.setText("Capacidad de almacenamiento");
+        jpAgregarEsc.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 24, -1, -1));
+        jpAgregarEsc.add(jtcapalm, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 66, 164, -1));
 
         jLabel11.setText("Tipo de almacenamiento: ");
+        jpAgregarEsc.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 117, -1, -1));
 
         almacenamiento.add(btHDD);
         btHDD.setText("HDD");
@@ -108,11 +119,14 @@ public class Main extends javax.swing.JFrame {
                 btHDDActionPerformed(evt);
             }
         });
+        jpAgregarEsc.add(btHDD, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 139, -1, -1));
 
         almacenamiento.add(btSSD);
         btSSD.setText("SSD");
+        jpAgregarEsc.add(btSSD, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 139, -1, -1));
 
         btGraphics.setText("Tarjeta grafica");
+        jpAgregarEsc.add(btGraphics, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 186, -1, -1));
 
         btagregarEsc.setBackground(new java.awt.Color(102, 255, 102));
         btagregarEsc.setText("Agregar");
@@ -121,91 +135,10 @@ public class Main extends javax.swing.JFrame {
                 btagregarEscActionPerformed(evt);
             }
         });
+        jpAgregarEsc.add(btagregarEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
 
-        javax.swing.GroupLayout jpAgregarEscLayout = new javax.swing.GroupLayout(jpAgregarEsc);
-        jpAgregarEsc.setLayout(jpAgregarEscLayout);
-        jpAgregarEscLayout.setHorizontalGroup(
-            jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAgregarEscLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpAgregarEscLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(47, 47, 47)
-                        .addComponent(jtram, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpAgregarEscLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jthostname, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpAgregarEscLayout.createSequentialGroup()
-                        .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtmask, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtIP, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(26, 26, 26)
-                .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel11)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jpAgregarEscLayout.createSequentialGroup()
-                            .addComponent(btHDD)
-                            .addGap(27, 27, 27)
-                            .addComponent(btSSD))
-                        .addComponent(jtcapalm))
-                    .addComponent(btGraphics))
-                .addContainerGap(49, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAgregarEscLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btagregarEsc)
-                .addGap(175, 175, 175))
-        );
-        jpAgregarEscLayout.setVerticalGroup(
-            jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAgregarEscLayout.createSequentialGroup()
-                .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpAgregarEscLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel10))
-                    .addGroup(jpAgregarEscLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpAgregarEscLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jtmask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jpAgregarEscLayout.createSequentialGroup()
-                        .addComponent(jtcapalm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel11)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpAgregarEscLayout.createSequentialGroup()
-                        .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btHDD)
-                            .addComponent(btSSD))
-                        .addGap(26, 26, 26)
-                        .addComponent(btGraphics))
-                    .addGroup(jpAgregarEscLayout.createSequentialGroup()
-                        .addGap(0, 29, Short.MAX_VALUE)
-                        .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jthostname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(jpAgregarEscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btagregarEsc)
-                .addGap(18, 18, 18))
-        );
+        jtIP.setText("jTextField1");
+        jpAgregarEsc.add(jtIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 35, 146, -1));
 
         tabs.addTab("Agregar PC de Escritorio", jpAgregarEsc);
 
@@ -297,7 +230,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(rgbbox)))
                 .addGap(43, 43, 43)
                 .addComponent(agregarLaptop)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         tabs.addTab("Agregar Laptop", AgregarLaptop);
@@ -320,22 +253,43 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jpListarLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         tabs.addTab("Listar", jpListar);
 
         jpEliminar.setMinimumSize(new java.awt.Dimension(423, 335));
 
+        jLabel7.setText("Ingrese el indice de la PC a eliminar");
+
+        btEliminar.setText("Eliminar");
+
         javax.swing.GroupLayout jpEliminarLayout = new javax.swing.GroupLayout(jpEliminar);
         jpEliminar.setLayout(jpEliminarLayout);
         jpEliminarLayout.setHorizontalGroup(
             jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
+            .addGroup(jpEliminarLayout.createSequentialGroup()
+                .addContainerGap(134, Short.MAX_VALUE)
+                .addGroup(jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpEliminarLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(117, 117, 117))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpEliminarLayout.createSequentialGroup()
+                        .addGroup(jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jtEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btEliminar))
+                        .addGap(175, 175, 175))))
         );
         jpEliminarLayout.setVerticalGroup(
             jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
+            .addGroup(jpEliminarLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jLabel7)
+                .addGap(36, 36, 36)
+                .addComponent(jtEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(btEliminar)
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         tabs.addTab("Eliminar", jpEliminar);
@@ -362,7 +316,7 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(jpcrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 51, Short.MAX_VALUE)))
+                        .addGap(0, 126, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jpcrudLayout.setVerticalGroup(
@@ -371,7 +325,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 321, Short.MAX_VALUE)
+                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 322, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(crudSalir)
                 .addGap(14, 14, 14))
@@ -381,7 +335,9 @@ public class Main extends javax.swing.JFrame {
         frameCrud.getContentPane().setLayout(frameCrudLayout);
         frameCrudLayout.setHorizontalGroup(
             frameCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpcrud, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(frameCrudLayout.createSequentialGroup()
+                .addComponent(jpcrud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         frameCrudLayout.setVerticalGroup(
             frameCrudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,8 +417,8 @@ public class Main extends javax.swing.JFrame {
         String ip = jtIP.getText();
         String mask = jtmask.getText();
         String host = jthostname.getText();
-        int ram = Integer.parseInt(jtram.getText());
-        int capAlm = Integer.parseInt(jtcapalm.getText());
+        String ram = jtram.getText();
+        String capAlm = jtcapalm.getText();
         String tipo = "";
         if(btHDD.isSelected()){
             tipo = "HDD";
@@ -488,7 +444,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_agregarLaptopActionPerformed
 
     private void tabsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabsStateChanged
-        if (tabs.getSelectedIndex() == 1) {
+        if (tabs.getSelectedIndex() == 2) {
             listPC.setText("");
             for (PC c : computadoras) {
                 listPC.append(""+computadoras.indexOf(c) + ".- "+c + "\n");
@@ -536,6 +492,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton agregarLaptop;
     private javax.swing.ButtonGroup almacenamiento;
     private javax.swing.JPanel bgPanel;
+    private javax.swing.JButton btEliminar;
     private javax.swing.JCheckBox btGraphics;
     private javax.swing.JRadioButton btHDD;
     private javax.swing.JRadioButton btSSD;
@@ -556,12 +513,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpAgregarEsc;
     private javax.swing.JPanel jpEliminar;
     private javax.swing.JPanel jpListar;
     private javax.swing.JPanel jpcrud;
+    private javax.swing.JTextField jtEliminar;
     private javax.swing.JTextField jtIP;
     private javax.swing.JTextField jtIP2;
     private javax.swing.JTextField jtcapalm;

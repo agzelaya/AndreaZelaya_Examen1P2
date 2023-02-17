@@ -1,13 +1,13 @@
 public class PC_Escritorio extends PC{
-    private int ram;
-    private int cap_alm;
+    private String ram;
+    private String cap_alm;
     private String tipo_alm;
     private boolean graphics_card;
 
     public PC_Escritorio() {
     }
 
-    public PC_Escritorio(int ram, int cap_alm, String tipo_alm, boolean graphics_card, String ip, String mask, String hostname) {
+    public PC_Escritorio(String ram, String cap_alm, String tipo_alm, boolean graphics_card, String ip, String mask, String hostname) {
         super(ip, mask, hostname);
         this.ram = ram;
         this.cap_alm = cap_alm;
@@ -15,19 +15,19 @@ public class PC_Escritorio extends PC{
         this.graphics_card = graphics_card;
     }
 
-    public int getRam() {
+    public String getRam() {
         return ram;
     }
 
-    public void setRam(int ram) {
+    public void setRam(String ram) {
         this.ram = ram;
     }
 
-    public int getCap_alm() {
+    public String getCap_alm() {
         return cap_alm;
     }
 
-    public void setCap_alm(int cap_alm) {
+    public void setCap_alm(String cap_alm) {
         this.cap_alm = cap_alm;
     }
 
@@ -57,7 +57,7 @@ public class PC_Escritorio extends PC{
         }else{
             bool = "No";
         }
-        return "RAM: " + ram + "\n" +"Cap. almacenamiento: " + cap_alm + "\n" + 
+        return super.toString() + "RAM: " + ram + "\n" +"Cap. almacenamiento: " + cap_alm + "\n" + 
                 "Tipo de almacenamiento: " + tipo_alm +  "\n" +"Tarjeta grafica: " + bool;
     }
     
