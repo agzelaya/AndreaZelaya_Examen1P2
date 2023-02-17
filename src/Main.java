@@ -1,18 +1,11 @@
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import java.util.Scanner;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
-/**
- *
- * @author andgz
- */
 public class Main extends javax.swing.JFrame {
-
+static Scanner in = new Scanner(System.in);
+static PC currentPC;
     /**
      * Creates new form Main
      */
@@ -261,12 +254,6 @@ public class Main extends javax.swing.JFrame {
 
         jLabel7.setText("Ingrese el indice de la PC a eliminar");
 
-        jtEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtEliminarActionPerformed(evt);
-            }
-        });
-
         btEliminar.setText("Eliminar");
         btEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -372,6 +359,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         btingrese.setText("Ingresar a PC");
+        btingrese.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btingreseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bgPanelLayout = new javax.swing.GroupLayout(bgPanel);
         bgPanel.setLayout(bgPanelLayout);
@@ -480,14 +472,24 @@ public class Main extends javax.swing.JFrame {
             if ((Integer.parseInt(jtEliminar.getText())) >= 0 && (Integer.parseInt(jtEliminar.getText())) < computadoras.size()) {
                 computadoras.remove((Integer.parseInt(jtEliminar.getText())));
             } else {
-                
+                System.out.println("No se encontro ningun");
             }
         }
     }//GEN-LAST:event_btEliminarActionPerformed
 
-    private void jtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtEliminarActionPerformed
+    private void btingreseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btingreseActionPerformed
+        setVisible(false);
+        System.out.println("Ingrese el IP de la computadora a ingresar: ");
+        String ip = in.next();
+        for (PC c : computadoras) {
+            if(c.getIp().equals(ip)){
+                currentPC = c;
+                System.out.print("\n" + c.getHostname()+"#");
+            }else{
+                System.out.println("PC no existente");
+            }
+        }
+    }//GEN-LAST:event_btingreseActionPerformed
 
     /**
      * @param args the command line arguments
