@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -136,8 +137,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jpAgregarEsc.add(btagregarEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
-
-        jtIP.setText("jTextField1");
         jpAgregarEsc.add(jtIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 35, 146, -1));
 
         tabs.addTab("Agregar PC de Escritorio", jpAgregarEsc);
@@ -262,34 +261,46 @@ public class Main extends javax.swing.JFrame {
 
         jLabel7.setText("Ingrese el indice de la PC a eliminar");
 
+        jtEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtEliminarActionPerformed(evt);
+            }
+        });
+
         btEliminar.setText("Eliminar");
+        btEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpEliminarLayout = new javax.swing.GroupLayout(jpEliminar);
         jpEliminar.setLayout(jpEliminarLayout);
         jpEliminarLayout.setHorizontalGroup(
             jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpEliminarLayout.createSequentialGroup()
-                .addContainerGap(134, Short.MAX_VALUE)
+                .addContainerGap(120, Short.MAX_VALUE)
                 .addGroup(jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpEliminarLayout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(117, 117, 117))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpEliminarLayout.createSequentialGroup()
-                        .addGroup(jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jtEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btEliminar))
-                        .addGap(175, 175, 175))))
+                        .addComponent(jtEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpEliminarLayout.createSequentialGroup()
+                        .addComponent(btEliminar)
+                        .addGap(161, 161, 161))))
         );
         jpEliminarLayout.setVerticalGroup(
             jpEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpEliminarLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(jLabel7)
-                .addGap(36, 36, 36)
+                .addGap(37, 37, 37)
                 .addComponent(jtEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addGap(52, 52, 52)
                 .addComponent(btEliminar)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         tabs.addTab("Eliminar", jpEliminar);
@@ -429,18 +440,30 @@ public class Main extends javax.swing.JFrame {
         
         PC_Escritorio pc = new PC_Escritorio(ram,capAlm,tipo,tarjeta,ip,mask,host);
         computadoras.add(pc);
+        
+        jtIP.setText("");
+        jtmask.setText("");
+        jthostname.setText("");
+        jtram.setText("");
+        jtcapalm.setText("");
     }//GEN-LAST:event_btagregarEscActionPerformed
 
     private void agregarLaptopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarLaptopActionPerformed
-        String ip = jtIP.getText();
-        String mask = jtmask.getText();
-        String host = jthostname.getText();
+        String ip = jtIP2.getText();
+        String mask = jtmask2.getText();
+        String host = jthostname2.getText();
         String marca = jtmarca.getText();
         String def = jtdefinicion.getText();
         boolean rgb = rgbbox.isSelected();
         
         Laptop laptop = new Laptop(marca,def,rgb,ip,mask,host);
         computadoras.add(laptop);
+        
+         jtIP2.setText("");
+        jtmask2.setText("");
+        jthostname2.setText("");
+        jtmarca.setText("");
+        jtdefinicion.setText("");
     }//GEN-LAST:event_agregarLaptopActionPerformed
 
     private void tabsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabsStateChanged
@@ -451,6 +474,20 @@ public class Main extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tabsStateChanged
+
+    private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
+        if (esNumero(jtEliminar.getText())) {
+            if ((Integer.parseInt(jtEliminar.getText())) >= 0 && (Integer.parseInt(jtEliminar.getText())) < computadoras.size()) {
+                computadoras.remove((Integer.parseInt(jtEliminar.getText())));
+            } else {
+                
+            }
+        }
+    }//GEN-LAST:event_btEliminarActionPerformed
+
+    private void jtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -485,6 +522,15 @@ public class Main extends javax.swing.JFrame {
                 new Main().setVisible(true);
             }
         });
+    }
+    
+    public static boolean esNumero(String str) {
+        for (char c : str.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

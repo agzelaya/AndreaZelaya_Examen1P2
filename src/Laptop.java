@@ -39,7 +39,13 @@ public class Laptop extends PC{
 
     @Override
     public String toString() {
-        return "Laptop{" + "marca=" + marca + ", def_pantalla=" + def_pantalla + ", rgb=" + rgb + '}';
+        String bool = "";
+        if(rgb){
+            bool = "Si";
+        }else{
+            bool = "No";
+        }
+        return super.toString() + "Marca: " +  marca + "\n"+"Definicion de pantalla: " + def_pantalla + "\n"+"Teclado RGB: " + rgb + "\n";
     }
     
     
