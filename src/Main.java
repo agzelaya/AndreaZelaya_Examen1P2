@@ -478,16 +478,16 @@ public class Main extends javax.swing.JFrame {
 
     private void btagregarEscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btagregarEscActionPerformed
         String ip = "";
-        if(validar(jtIP.getText())){
-             ip = jtIP.getText();
-        }else{
+        if (validar(jtIP.getText())) {
+            ip = jtIP.getText();
+        } else {
             JOptionPane.showMessageDialog(this, "Valor no valido");
         }
-        
+
         String mask = "";
-        if(validar(jtmask.getText())){
+        if (validar(jtmask.getText())) {
             mask = jtmask.getText();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Valor no valido");
         }
         String host = jthostname.getText();
@@ -513,19 +513,19 @@ public class Main extends javax.swing.JFrame {
 
     private void agregarLaptopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarLaptopActionPerformed
         String ip = "";
-        if(validar(jtIP2.getText())){
+        if (validar(jtIP2.getText())) {
             ip = jtIP2.getText();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Valor no valido");
         }
-        
+
         String mask = "";
-        if(validar(jtmask2.getText())){
+        if (validar(jtmask2.getText())) {
             mask = jtmask2.getText();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Valor no valido");
         }
-        
+
         String host = jthostname2.getText();
         String marca = jtmarca.getText();
         String def = jtdefinicion.getText();
@@ -575,7 +575,7 @@ public class Main extends javax.swing.JFrame {
                 jfIngresarPC.setVisible(false);
                 console();
             } else {
-                JOptionPane.showMessageDialog(this, "PC no existente");
+                ;
             }
         }
     }//GEN-LAST:event_btingresarActionPerformed
@@ -589,14 +589,14 @@ public class Main extends javax.swing.JFrame {
                 showInfo();
             } else if (command.equals("exit")) {
                 setVisible(true);
-            }else{
+            } else {
                 String[] comArray = command.split("_");
-                if(comArray[0].equals("ping")){
+                if (comArray[0].equals("ping")) {
                     ping(comArray[1]);
-                }else{
-                    
+                } else {
+
                 }
-                
+
             }
         } while (!command.equals("exit"));
 
@@ -607,92 +607,110 @@ public class Main extends javax.swing.JFrame {
         PC dest = new PC();
         int contIPdg = 0;
         boolean first3isEqual = true;
-        boolean sameIP = false;
         boolean exists = false;
         for (PC c : computadoras) {
-            if(c.getIp().equals(ip_dest)){
+            if (c.getIp().equals(ip_dest)) {
                 exists = true;
                 dest = c;
             }
         }
-        
-        String[] ipdest = ip_dest.split("\\.");
-        String[] ipactual = currentPC.getIp().split("\\.");
-        int lastIPdest = Integer.parseInt(ipdest[3]);
-        int lastIPact = Integer.parseInt(ipactual[3]);
-        
-        
-        for (int i = 0; i < 3; i++) {
-            if(!ipdest[i].equals(ipactual[i])){
-                first3isEqual = false;
-            }
-        }
-        
-        String[] StrDestMask = dest.getMask().split("\\.");
-        int destMask = Integer.parseInt(StrDestMask[3]);
-        
-        
-        
-        if(first3isEqual){
-            if(destMask == 192 || destMask == 224 || destMask == 240 ||
-                    destMask == 248 || destMask == 252 || destMask == 254 || destMask == 255){
-                int binDestMask = decAbin(destMask);
-                int cont1 = 0;
-                
-                String binDestMaskStr = Integer.toString(binDestMask);
-                
-                for (int i = 0; i < binDestMaskStr.length(); i++) {
-                    char car = binDestMaskStr.charAt(i);
-                    if(car == '1'){
-                        cont1 ++;
-                    }
-                }
-                
-                int binlastIPdest = decAbin(lastIPdest);
-                String binlastIPdestStr = Integer.toString(binlastIPdest);
-                int binlastIPact = decAbin(lastIPact);
-                String binlastIPactStr = Integer.toString(binlastIPact);
-                
-                for (int i = 0; i < cont1; i++) {
-                    char carDest = binlastIPdestStr.charAt(i);
-                    char carAct = binlastIPactStr.charAt(i);
-                    
-                    if(carDest != carAct){
-                        contIPdg++;
-                    }
-                }
-                
-                //exitoso
-                if(contIPdg == 0){
-                    System.out.println("Reply from " + ip_dest + ": bytes-32 time-37ms TTL=46" + "\n"
-                    + "Reply from " + ip_dest + ": bytes-32 time-37ms TTL=46" + "\n"
-                    + "Reply from " + ip_dest + ": bytes-32 time-37ms TTL=46" + "\n"
-                    + "Reply from " + ip_dest + ": bytes-32 time-37ms TTL=46" + "\n\n"
-                    + "Ping statistics for " + ip_dest + ":\n"
-                            + "     Packets: Sent = 4, Recieved = 4, Lost = 0 (0% loss)");
-                    //inalcanzable
-                }else if(contIPdg != 0){
-                    System.out.println("Reply from " + ip_dest + ": Destination host unreachable" + "\n"
-                    + "Reply from " + ip_dest + ": Destination host unreachable" + "\n"
-                    + "Reply from " + ip_dest + ": Destination host unreachable" + "\n"
-                    + "Reply from " + ip_dest + ": Destination host unreachable" + "\n\n"
-                    + "Ping statistics for " + ip_dest + ":\n"
-                            + "     Packets: Sent = 4, Recieved = 0, Lost = 4 (100% loss)");
-                }
-                
-            }
-        }
-        
-        if (!exists){
+
+        if (!exists) {
             System.out.println("Request timed out\n"
                     + "Request timed out\n"
                     + "Request timed out\n"
                     + "Request timed out\n\n"
                     + "Ping statistics for " + ip_dest + ":\n"
-                            + "     Packets: Sent = 4, Recieved = 0, Lost = 4 (100% loss)");
+                    + "     Packets: Sent = 4, Recieved = 0, Lost = 4 (100% loss)");
+        } else {
+
+            String[] ipdest = ip_dest.split("\\.");
+            String[] ipactual = currentPC.getIp().split("\\.");
+            int lastIPdest = Integer.parseInt(ipdest[3]);
+            int lastIPact = Integer.parseInt(ipactual[3]);
+
+            for (int i = 0; i < 3; i++) {
+                if (!ipdest[i].equals(ipactual[i])) {
+                    first3isEqual = false;
+                }
+            }
+
+            String[] StrDestMask = dest.getMask().split("\\.");
+            int destMask = Integer.parseInt(StrDestMask[3]);
+
+            if (first3isEqual) {
+                if (destMask == 192 || destMask == 224 || destMask == 240
+                        || destMask == 248 || destMask == 252 || destMask == 254 || destMask == 255) {
+                    int binDestMask = decAbin(destMask);
+                    int cont1 = 0;
+
+                    String binDestMaskStr = Integer.toString(binDestMask);
+
+                    for (int i = 0; i < binDestMaskStr.length(); i++) {
+                        char car = binDestMaskStr.charAt(i);
+                        if (car == '1') {
+                            cont1++;
+                        }
+                    }
+
+                    int binlastIPdest = decAbin(lastIPdest);
+                    String binlastIPdestStr = Integer.toString(binlastIPdest);
+                    if (binlastIPdestStr.length() != 8) {
+                        int resta = 8 - binlastIPdestStr.length();
+                        for (int i = 0; i < resta - 1; i++) {
+                            binlastIPdestStr += binlastIPdestStr + 0;
+                        }
+                    }
+                    int binlastIPact = decAbin(lastIPact);
+                    String binlastIPactStr = Integer.toString(binlastIPact);
+                    if (binlastIPactStr.length() != 8) {
+                        int resta = 8 - binlastIPactStr.length();
+                        for (int i = 0; i < resta - 1; i++) {
+                            binlastIPactStr += binlastIPactStr + 0;
+                        }
+                    }
+
+                    for (int i = 0; i < cont1; i++) {
+                        char carDest = binlastIPdestStr.charAt(i);
+                        char carAct = binlastIPactStr.charAt(i);
+
+                        if (carDest != carAct) {
+                            contIPdg++;
+                        }
+                    }
+
+                    //exitoso
+                    if (contIPdg == 0) {
+                        System.out.println("Reply from " + ip_dest + ": bytes-32 time-37ms TTL=46" + "\n"
+                                + "Reply from " + ip_dest + ": bytes-32 time-37ms TTL=46" + "\n"
+                                + "Reply from " + ip_dest + ": bytes-32 time-37ms TTL=46" + "\n"
+                                + "Reply from " + ip_dest + ": bytes-32 time-37ms TTL=46" + "\n\n"
+                                + "Ping statistics for " + ip_dest + ":\n"
+                                + "     Packets: Sent = 4, Recieved = 4, Lost = 0 (0% loss)");
+                        //inalcanzable
+                    } else if (contIPdg != 0) {
+                        System.out.println("Reply from " + ip_dest + ": Destination host unreachable" + "\n"
+                                + "Reply from " + ip_dest + ": Destination host unreachable" + "\n"
+                                + "Reply from " + ip_dest + ": Destination host unreachable" + "\n"
+                                + "Reply from " + ip_dest + ": Destination host unreachable" + "\n\n"
+                                + "Ping statistics for " + ip_dest + ":\n"
+                                + "     Packets: Sent = 4, Recieved = 0, Lost = 4 (100% loss)");
+                    }
+
+                }
+            }
         }
+
+//        if (!exists){
+//            System.out.println("Request timed out\n"
+//                    + "Request timed out\n"
+//                    + "Request timed out\n"
+//                    + "Request timed out\n\n"
+//                    + "Ping statistics for " + ip_dest + ":\n"
+//                            + "     Packets: Sent = 4, Recieved = 0, Lost = 4 (100% loss)");
+//        }
     }
-    
+
     public static int decAbin(int num) {
         if (num == 0) {
             return 0;
@@ -748,18 +766,18 @@ public class Main extends javax.swing.JFrame {
     public static void showInfo() {
         System.out.println(currentPC);
     }
-    
-    public boolean validar(String num){
+
+    public boolean validar(String num) {
         boolean isValid = false;
         int puntos = 0;
         for (int i = 0; i < num.length(); i++) {
             char car = num.charAt(i);
-            
-            if(car == '.'){
-                puntos ++;
+
+            if (car == '.') {
+                puntos++;
             }
         }
-        if(puntos == 3){
+        if (puntos == 3) {
             isValid = true;
         }
         return isValid;

@@ -45,7 +45,7 @@ public class Laptop extends PC{
         }else{
             bool = "No";
         }
-        return super.toString() + "Marca: " +  marca + "\n"+"Definicion de pantalla: " + def_pantalla + "\n"+"Teclado RGB: " + rgb + "\n";
+        return super.toString() + "Marca: " +  marca + "\n"+"Definicion de pantalla: " + def_pantalla + "\n"+"Teclado RGB: " + bool + "\n";
     }
     
     
