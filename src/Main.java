@@ -477,8 +477,19 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btHDDActionPerformed
 
     private void btagregarEscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btagregarEscActionPerformed
-        String ip = jtIP.getText();
-        String mask = jtmask.getText();
+        String ip = "";
+        if(validar(jtIP.getText())){
+             ip = jtIP.getText();
+        }else{
+            JOptionPane.showMessageDialog(this, "Valor no valido");
+        }
+        
+        String mask = "";
+        if(validar(jtmask.getText())){
+            mask = jtmask.getText();
+        }else{
+            JOptionPane.showMessageDialog(this, "Valor no valido");
+        }
         String host = jthostname.getText();
         String ram = jtram.getText();
         String capAlm = jtcapalm.getText();
@@ -501,8 +512,20 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btagregarEscActionPerformed
 
     private void agregarLaptopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarLaptopActionPerformed
-        String ip = jtIP2.getText();
-        String mask = jtmask2.getText();
+        String ip = "";
+        if(validar(jtIP2.getText())){
+            ip = jtIP2.getText();
+        }else{
+            JOptionPane.showMessageDialog(this, "Valor no valido");
+        }
+        
+        String mask = "";
+        if(validar(jtmask2.getText())){
+            mask = jtmask2.getText();
+        }else{
+            JOptionPane.showMessageDialog(this, "Valor no valido");
+        }
+        
         String host = jthostname2.getText();
         String marca = jtmarca.getText();
         String def = jtdefinicion.getText();
@@ -564,13 +587,58 @@ public class Main extends javax.swing.JFrame {
             command = in.nextLine();
             if (command.equals("show")) {
                 showInfo();
-            } else if (false) {
-
             } else if (command.equals("exit")) {
                 setVisible(true);
+            }else{
+                String[] comArray = command.split("_");
+                if(comArray[0].equals("ping")){
+                    ping(comArray[1]);
+                }else{
+                    
+                }
+                
             }
-        }while(!command.equals("exit"));
+        } while (!command.equals("exit"));
+
+    }
+
+    public void ping(String ip_dest) {
+        System.out.println("Pinging to: " + ip_dest + " with 32 bits of data");
+        PC dest;
+        boolean isEqual = true;
+        boolean exists = false;
+        for (PC c : computadoras) {
+            if(c.getIp().equals(ip_dest)){
+                exists = true;
+                dest = c;
+            }
+        }
         
+        String[] ipdest = ip_dest.split("\\.");
+        String[] ipactual = currentPC.getIp().split("\\.");
+        
+        for (int i = 0; i < 3; i++) {
+            if(!ipdest[i].equals(ipactual[i])){
+                isEqual = false;
+            }
+        }
+        
+        if (!exists){
+            System.out.println("\nRequest timed out\n"
+                    + "Request timed out\n"
+                    + "Request timed out\n"
+                    + "Request timed out\n\n"
+                    + "Ping statistics for " + ip_dest + ":\n"
+                            + "     Packets: Sent = 4, Recieved = 0, lost = 4 (100% loss)");
+        }
+    }
+    
+    public static int decAbin(int num) {
+        if (num == 0) {
+            return 0;
+        } else {
+            return (num % 2 + 10 * decAbin(num / 2));
+        }
     }
 
     /**
@@ -619,6 +687,22 @@ public class Main extends javax.swing.JFrame {
 
     public static void showInfo() {
         System.out.println(currentPC);
+    }
+    
+    public boolean validar(String num){
+        boolean isValid = false;
+        int puntos = 0;
+        for (int i = 0; i < num.length(); i++) {
+            char car = num.charAt(i);
+            
+            if(car == '.'){
+                puntos ++;
+            }
+        }
+        if(puntos == 3){
+            isValid = true;
+        }
+        return isValid;
     }
 
 

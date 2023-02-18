@@ -57,7 +57,7 @@ public class PC_Escritorio extends PC{
         }else{
             bool = "No";
         }
-        return super.toString() + "RAM: " + ram + "\n" +"Cap. almacenamiento: " + cap_alm + "\n" + 
+        return super.toString() + "\n" +"RAM: " + ram + "\n" +"Cap. almacenamiento: " + cap_alm + "\n" + 
                 "Tipo de almacenamiento: " + tipo_alm +  "\n" +"Tarjeta grafica: " + bool + "\n";
     }
     
