@@ -1,11 +1,13 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import javax.swing.JOptionPane;
 
 public class Main extends javax.swing.JFrame {
-static Scanner in = new Scanner(System.in);
-static PC currentPC;
+
+    static Scanner in = new Scanner(System.in);
+    static PC currentPC;
+
     /**
      * Creates new form Main
      */
@@ -64,6 +66,11 @@ static PC currentPC;
         btEliminar = new javax.swing.JButton();
         crudSalir = new javax.swing.JButton();
         almacenamiento = new javax.swing.ButtonGroup();
+        jfIngresarPC = new javax.swing.JFrame();
+        jpIngresar = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jtPCIP = new javax.swing.JTextField();
+        btingresar = new javax.swing.JButton();
         bgPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btcrud = new javax.swing.JButton();
@@ -342,6 +349,59 @@ static PC currentPC;
             .addComponent(jpcrud, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jpIngresar.setBackground(new java.awt.Color(102, 102, 255));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("Ingrese el IP de la PC a ingresar: ");
+
+        btingresar.setBackground(new java.awt.Color(102, 255, 102));
+        btingresar.setText("Ingresar");
+        btingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btingresarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpIngresarLayout = new javax.swing.GroupLayout(jpIngresar);
+        jpIngresar.setLayout(jpIngresarLayout);
+        jpIngresarLayout.setHorizontalGroup(
+            jpIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpIngresarLayout.createSequentialGroup()
+                .addGroup(jpIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpIngresarLayout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addGroup(jpIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtPCIP)))
+                    .addGroup(jpIngresarLayout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(btingresar)))
+                .addContainerGap(108, Short.MAX_VALUE))
+        );
+        jpIngresarLayout.setVerticalGroup(
+            jpIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpIngresarLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(jLabel8)
+                .addGap(40, 40, 40)
+                .addComponent(jtPCIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(btingresar)
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jfIngresarPCLayout = new javax.swing.GroupLayout(jfIngresarPC.getContentPane());
+        jfIngresarPC.getContentPane().setLayout(jfIngresarPCLayout);
+        jfIngresarPCLayout.setHorizontalGroup(
+            jfIngresarPCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jfIngresarPCLayout.setVerticalGroup(
+            jfIngresarPCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
@@ -423,16 +483,16 @@ static PC currentPC;
         String ram = jtram.getText();
         String capAlm = jtcapalm.getText();
         String tipo = "";
-        if(btHDD.isSelected()){
+        if (btHDD.isSelected()) {
             tipo = "HDD";
-        }else if(btSSD.isSelected()){
+        } else if (btSSD.isSelected()) {
             tipo = "SSD";
         }
         boolean tarjeta = btGraphics.isSelected();
-        
-        PC_Escritorio pc = new PC_Escritorio(ram,capAlm,tipo,tarjeta,ip,mask,host);
+
+        PC_Escritorio pc = new PC_Escritorio(ram, capAlm, tipo, tarjeta, ip, mask, host);
         computadoras.add(pc);
-        
+
         jtIP.setText("");
         jtmask.setText("");
         jthostname.setText("");
@@ -447,11 +507,11 @@ static PC currentPC;
         String marca = jtmarca.getText();
         String def = jtdefinicion.getText();
         boolean rgb = rgbbox.isSelected();
-        
-        Laptop laptop = new Laptop(marca,def,rgb,ip,mask,host);
+
+        Laptop laptop = new Laptop(marca, def, rgb, ip, mask, host);
         computadoras.add(laptop);
-        
-         jtIP2.setText("");
+
+        jtIP2.setText("");
         jtmask2.setText("");
         jthostname2.setText("");
         jtmarca.setText("");
@@ -462,7 +522,7 @@ static PC currentPC;
         if (tabs.getSelectedIndex() == 2) {
             listPC.setText("");
             for (PC c : computadoras) {
-                listPC.append(""+computadoras.indexOf(c) + ".- "+c + "\n");
+                listPC.append("" + computadoras.indexOf(c) + ".- " + c + "\n");
             }
         }
     }//GEN-LAST:event_tabsStateChanged
@@ -478,18 +538,40 @@ static PC currentPC;
     }//GEN-LAST:event_btEliminarActionPerformed
 
     private void btingreseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btingreseActionPerformed
-        setVisible(false);
-        System.out.println("Ingrese el IP de la computadora a ingresar: ");
-        String ip = in.next();
+        jfIngresarPC.setVisible(true);
+        jfIngresarPC.pack();
+
+    }//GEN-LAST:event_btingreseActionPerformed
+
+    private void btingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btingresarActionPerformed
+        String ip = jtPCIP.getText();
         for (PC c : computadoras) {
-            if(c.getIp().equals(ip)){
+            if (c.getIp().equals(ip)) {
                 currentPC = c;
-                System.out.print("\n" + c.getHostname()+"#");
-            }else{
-                System.out.println("PC no existente");
+                setVisible(false);
+                jfIngresarPC.setVisible(false);
+                console();
+            } else {
+                JOptionPane.showMessageDialog(this, "PC no existente");
             }
         }
-    }//GEN-LAST:event_btingreseActionPerformed
+    }//GEN-LAST:event_btingresarActionPerformed
+
+    public void console() {
+        String command = "";
+        do {
+            System.out.print("\n" + currentPC.getHostname() + "#");
+            command = in.nextLine();
+            if (command.equals("show")) {
+                showInfo();
+            } else if (false) {
+
+            } else if (command.equals("exit")) {
+                setVisible(true);
+            }
+        }while(!command.equals("exit"));
+        
+    }
 
     /**
      * @param args the command line arguments
@@ -525,7 +607,7 @@ static PC currentPC;
             }
         });
     }
-    
+
     public static boolean esNumero(String str) {
         for (char c : str.toCharArray()) {
             if (!Character.isDigit(c)) {
@@ -534,6 +616,11 @@ static PC currentPC;
         }
         return true;
     }
+
+    public static void showInfo() {
+        System.out.println(currentPC);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AgregarLaptop;
@@ -546,6 +633,7 @@ static PC currentPC;
     private javax.swing.JRadioButton btSSD;
     private javax.swing.JButton btagregarEsc;
     private javax.swing.JButton btcrud;
+    private javax.swing.JButton btingresar;
     private javax.swing.JButton btingrese;
     private javax.swing.JButton crudSalir;
     private javax.swing.JFrame frameCrud;
@@ -562,15 +650,19 @@ static PC currentPC;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JFrame jfIngresarPC;
     private javax.swing.JPanel jpAgregarEsc;
     private javax.swing.JPanel jpEliminar;
+    private javax.swing.JPanel jpIngresar;
     private javax.swing.JPanel jpListar;
     private javax.swing.JPanel jpcrud;
     private javax.swing.JTextField jtEliminar;
     private javax.swing.JTextField jtIP;
     private javax.swing.JTextField jtIP2;
+    private javax.swing.JTextField jtPCIP;
     private javax.swing.JTextField jtcapalm;
     private javax.swing.JTextField jtdefinicion;
     private javax.swing.JTextField jthostname;
@@ -585,4 +677,3 @@ static PC currentPC;
     // End of variables declaration//GEN-END:variables
     ArrayList<PC> computadoras = new ArrayList();
 }
-
