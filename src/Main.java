@@ -665,7 +665,7 @@ public class Main extends javax.swing.JFrame {
                     String binlastIPactStr = Integer.toString(binlastIPact);
                     if (binlastIPactStr.length() != 8) {
                         int resta = 8 - binlastIPactStr.length();
-                        for (int i = 0; i < resta - 1; i++) {
+                        for (int i = 0; i < resta ; i++) {
                             binlastIPactStr += binlastIPactStr + 0;
                         }
                     }
